@@ -54,6 +54,18 @@ public:
    */
   operator NumTypeIn() { return m_val; }
 
+
+  /**
+   * @brief Scalar multiplication
+   *
+   * @param scal  Scalar operand
+   *
+   * @return Scalar * current phyVar
+   */
+  PhyVar<NumTypeIn, UnitTypeIn>
+  operator*(const NumTypeIn& scal);
+  
+  
   /**
    * @brief Addition
    *
@@ -63,6 +75,57 @@ public:
    */
   PhyVar<NumTypeIn, UnitTypeIn>
   operator+(const PhyVar<NumTypeIn, UnitTypeIn>& otherPhyVar);
+  
+  /**
+   * @brief Substraction
+   *
+   * @param otherPhyVar  Other operand
+   *
+   * @return Difference of the two PhyVar
+   */
+  PhyVar<NumTypeIn, UnitTypeIn>
+  operator-(const PhyVar<NumTypeIn, UnitTypeIn>& otherPhyVar);
+
+  /**
+   * @brief Multiplication
+   *
+   * @param otherPhyVar  Other operand
+   *                     Must have the same num type
+   *
+   * @return Multiplication of the two PhyVar
+   */
+  template <typename UnitTypeOther>
+  PhyVar<NumTypeIn,
+         Unit <UnitTypeIn::kg + UnitTypeOther::kg,
+               UnitTypeIn::m  + UnitTypeOther::m,
+               UnitTypeIn::s  + UnitTypeOther::s> >
+  operator*(const PhyVar<NumTypeIn, UnitTypeOther>& otherPhyVar);
+  
+  /**
+   * @brief Division
+   *
+   * @param otherPhyVar  Other operand
+   *                     Must have the same num type
+   *
+   * @return Division of the two PhyVar
+   */
+  template <typename UnitTypeOther>
+  PhyVar<NumTypeIn,
+         Unit <UnitTypeIn::kg - UnitTypeOther::kg,
+               UnitTypeIn::m  - UnitTypeOther::m,
+               UnitTypeIn::s  - UnitTypeOther::s> >
+  operator/(const PhyVar<NumTypeIn, UnitTypeOther>& otherPhyVar);
+  
+  /**
+   * @brief In-place scalar multiplication
+   *
+   * @param scal  Scalar operand
+   *
+   * @return Scalar * current phyVar
+   */
+  PhyVar<NumTypeIn, UnitTypeIn>&
+  operator*=(const NumTypeIn& scal);
+  
 
   /**
    * @brief In-place addition
@@ -73,6 +136,18 @@ public:
    */
   PhyVar<NumTypeIn, UnitTypeIn>&
   operator+=(const PhyVar<NumTypeIn, UnitTypeIn>& otherPhyVar);
+
+  
+  /**
+   * @brief In-place substraction
+   *
+   * @param otherPhyVar  Other operand
+   *
+   * @return Current PhyVar
+   */
+  PhyVar<NumTypeIn, UnitTypeIn>&
+  operator-=(const PhyVar<NumTypeIn, UnitTypeIn>& otherPhyVar);
+
   
   /**
    * @brief Ostream operator
@@ -88,6 +163,10 @@ public:
   template <typename NumTypeOther, typename UnitTypeOther>
   friend std::ostream& operator<<(std::ostream &out,
                                   const PhyVar<NumTypeOther, UnitTypeOther> &var);
+
+  // Friend with other PhyVar
+  template <typename NumTypeOther, typename UnitTypeOther>
+  friend class PhyVar;
   
 private:
 
