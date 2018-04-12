@@ -25,6 +25,16 @@ else()
 endif()
 message("Building mode: " ${CMAKE_BUILD_TYPE})
 
+#==========================================
+# Packages required
+#==========================================
+
+# Eigen3
+if (NOT DEFINED EIGEN_INCLUDE_DIRS)
+  set(EIGEN_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/external/Eigen" CACHE PATH "eigen")
+include_directories(${EIGEN_INCLUDE_DIRS})
+endif()
+
 #==============================================
 #Project sources : src, include
 #==============================================

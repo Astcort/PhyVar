@@ -1,4 +1,5 @@
 #include "../include/PhyVar.hpp"
+#include <Eigen>
 
 
 int main(int argc, char *argv[]) {
