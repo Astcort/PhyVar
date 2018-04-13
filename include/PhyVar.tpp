@@ -40,7 +40,27 @@ public:
    * @brief Cast to num type
    */
   operator NumTypeIn() { return m_val; }
+  
+  /**
+   * @brief Access
+   */
+  const NumTypeIn &val() const { return m_val; }
+  
+  /**
+   * @brief Access
+   */
+  NumTypeIn &val() { return m_val; }
 
+
+  /**
+   * @brief Scalar affectation 
+   *
+   * @param scal  Scalar operand
+   *
+   * @return Scalar * current phyVar
+   */
+  PhyVar<NumTypeIn, UnitTypeIn>&
+  operator=(const NumTypeIn& scal);
 
   /**
    * @brief Scalar multiplication
@@ -151,6 +171,63 @@ public:
   friend std::ostream& operator<<(std::ostream &out,
                                   const PhyVar<NumTypeOther, UnitTypeOther> &var);
 
+
+  /**
+   * @brief Equality operator
+   *
+   * @param otherPhyVar  Other Operand
+   *
+   * @return this == other ?
+   */
+  bool operator==(const PhyVar<NumTypeIn, UnitTypeIn>& otherPhyVar) const;
+
+  
+  /**
+   * @brief Inequality operator
+   *
+   * @param otherPhyVar  Other Operand
+   *
+   * @return this == other ?
+   */
+  bool operator!=(const PhyVar<NumTypeIn, UnitTypeIn>& otherPhyVar) const;
+
+  
+  /**
+   * @brief Strictly lover operator
+   *
+   * @param otherPhyVar  Other Operand
+   *
+   * @return this < other ?
+   */
+  bool operator<(const PhyVar<NumTypeIn, UnitTypeIn>& otherPhyVar) const;
+  
+  /**
+   * @brief Strictly greater operator
+   *
+   * @param otherPhyVar  Other Operand
+   *
+   * @return this > other ?
+   */
+  bool operator>(const PhyVar<NumTypeIn, UnitTypeIn>& otherPhyVar) const;
+  
+  /**
+   * @brief Lower operator
+   *
+   * @param otherPhyVar  Other Operand
+   *
+   * @return this <= other ?
+   */
+  bool operator<=(const PhyVar<NumTypeIn, UnitTypeIn>& otherPhyVar) const;
+  
+  /**
+   * @brief Greater operator
+   *
+   * @param otherPhyVar  Other Operand
+   *
+   * @return this >= other ?
+   */
+  bool operator>=(const PhyVar<NumTypeIn, UnitTypeIn>& otherPhyVar) const;
+  
   // Friend with other PhyVar
   template <typename NumTypeOther, typename UnitTypeOther>
   friend class PhyVar;
@@ -161,15 +238,6 @@ private:
   
 };
 
-
-template <typename NumTypeOther, typename UnitTypeOther>
-std::ostream& operator<<(std::ostream &out,
-                         const PhyVar<NumTypeOther, UnitTypeOther> &var) {
-  std::stringstream ss;
-  ss << var.m_val << UnitTypeOther::toString;
-  out << ss.str();
-  return out;
-}
 
 
 } // namespace PhyV
