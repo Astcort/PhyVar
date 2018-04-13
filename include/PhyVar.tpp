@@ -43,7 +43,7 @@ public:
    *
    * @param val  Value of the variable
    */
-  PhyVar(NumType val) :
+  PhyVar(NumType val = 0.) :
     m_val(val) {
     static_assert(isUnit<UnitType>::value, "PhyVar - Error : Invalid unit type");
   }
@@ -63,7 +63,7 @@ public:
    * @return Scalar * current phyVar
    */
   PhyVar<NumTypeIn, UnitTypeIn>
-  operator*(const NumTypeIn& scal);
+  operator*(const NumTypeIn& scal) const;
   
   
   /**
@@ -74,7 +74,7 @@ public:
    * @return Sum of the two PhyVar
    */
   PhyVar<NumTypeIn, UnitTypeIn>
-  operator+(const PhyVar<NumTypeIn, UnitTypeIn>& otherPhyVar);
+  operator+(const PhyVar<NumTypeIn, UnitTypeIn>& otherPhyVar) const;
   
   /**
    * @brief Substraction
@@ -84,7 +84,7 @@ public:
    * @return Difference of the two PhyVar
    */
   PhyVar<NumTypeIn, UnitTypeIn>
-  operator-(const PhyVar<NumTypeIn, UnitTypeIn>& otherPhyVar);
+  operator-(const PhyVar<NumTypeIn, UnitTypeIn>& otherPhyVar) const;
 
   /**
    * @brief Multiplication
@@ -99,7 +99,7 @@ public:
          Unit <UnitTypeIn::kg + UnitTypeOther::kg,
                UnitTypeIn::m  + UnitTypeOther::m,
                UnitTypeIn::s  + UnitTypeOther::s> >
-  operator*(const PhyVar<NumTypeIn, UnitTypeOther>& otherPhyVar);
+  operator*(const PhyVar<NumTypeIn, UnitTypeOther>& otherPhyVar) const;
   
   /**
    * @brief Division
@@ -114,7 +114,7 @@ public:
          Unit <UnitTypeIn::kg - UnitTypeOther::kg,
                UnitTypeIn::m  - UnitTypeOther::m,
                UnitTypeIn::s  - UnitTypeOther::s> >
-  operator/(const PhyVar<NumTypeIn, UnitTypeOther>& otherPhyVar);
+  operator/(const PhyVar<NumTypeIn, UnitTypeOther>& otherPhyVar) const;
   
   /**
    * @brief In-place scalar multiplication

@@ -1,6 +1,6 @@
 template <typename NumTypeIn, typename UnitTypeIn>
 PhyVar<NumTypeIn, UnitTypeIn>
-PhyVar<NumTypeIn, UnitTypeIn>::operator*(const NumTypeIn& scal) {
+PhyVar<NumTypeIn, UnitTypeIn>::operator*(const NumTypeIn& scal) const {
    PhyVar<NumTypeIn, UnitTypeIn> res(this->m_val);
   res *= scal;
   return res;
@@ -8,7 +8,7 @@ PhyVar<NumTypeIn, UnitTypeIn>::operator*(const NumTypeIn& scal) {
 
 template <typename NumTypeIn, typename UnitTypeIn>
 PhyVar<NumTypeIn, UnitTypeIn>
-PhyVar<NumTypeIn, UnitTypeIn>::operator+(const PhyVar<NumTypeIn, UnitTypeIn>& otherPhyVar) {
+PhyVar<NumTypeIn, UnitTypeIn>::operator+(const PhyVar<NumTypeIn, UnitTypeIn>& otherPhyVar) const {
   PhyVar<NumTypeIn, UnitTypeIn> res(this->m_val);
   res += otherPhyVar;
   return res;
@@ -17,7 +17,7 @@ PhyVar<NumTypeIn, UnitTypeIn>::operator+(const PhyVar<NumTypeIn, UnitTypeIn>& ot
 
 template <typename NumTypeIn, typename UnitTypeIn>
 PhyVar<NumTypeIn, UnitTypeIn>
-PhyVar<NumTypeIn, UnitTypeIn>::operator-(const PhyVar<NumTypeIn, UnitTypeIn>& otherPhyVar) {
+PhyVar<NumTypeIn, UnitTypeIn>::operator-(const PhyVar<NumTypeIn, UnitTypeIn>& otherPhyVar) const {
   PhyVar<NumTypeIn, UnitTypeIn> res(this->m_val);
   res -= otherPhyVar;
   return res;
@@ -29,7 +29,7 @@ PhyVar<NumTypeIn,
        Unit <UnitTypeIn::kg + UnitTypeOther::kg,
              UnitTypeIn::m  + UnitTypeOther::m,
              UnitTypeIn::s  + UnitTypeOther::s> >
-PhyVar<NumTypeIn, UnitTypeIn>::operator*(const PhyVar<NumTypeIn, UnitTypeOther>& otherPhyVar) {
+PhyVar<NumTypeIn, UnitTypeIn>::operator*(const PhyVar<NumTypeIn, UnitTypeOther>& otherPhyVar) const {
   return PhyVar<NumTypeIn,
        Unit <UnitTypeIn::kg + UnitTypeOther::kg,
              UnitTypeIn::m  + UnitTypeOther::m,
@@ -43,7 +43,7 @@ PhyVar<NumTypeIn,
        Unit <UnitTypeIn::kg - UnitTypeOther::kg,
              UnitTypeIn::m  - UnitTypeOther::m,
              UnitTypeIn::s  - UnitTypeOther::s> >
-PhyVar<NumTypeIn, UnitTypeIn>::operator/(const PhyVar<NumTypeIn, UnitTypeOther>& otherPhyVar) {
+PhyVar<NumTypeIn, UnitTypeIn>::operator/(const PhyVar<NumTypeIn, UnitTypeOther>& otherPhyVar) const {
   return PhyVar<NumTypeIn,
        Unit <UnitTypeIn::kg - UnitTypeOther::kg,
              UnitTypeIn::m  - UnitTypeOther::m,

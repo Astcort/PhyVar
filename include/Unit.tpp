@@ -80,8 +80,9 @@ protected:
     if(exponent != 0) {
       ss << symbol;
       if (exponent != 1) {
-        ss <<"^" << exponent << " ";
+        ss <<"^" << exponent;
       }
+      ss << " ";
     }
   }
 };
