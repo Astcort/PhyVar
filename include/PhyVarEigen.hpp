@@ -6,6 +6,8 @@
 
 namespace Eigen {
 
+using namespace PhyV;
+  
 template<>
 template<typename NumType, typename UnitType>
 struct ScalarBinaryOpTraits<PhyVar<NumType, UnitType>,

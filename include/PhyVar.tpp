@@ -2,20 +2,7 @@
 
 #include "Unit.tpp"
 
-
-/**
- * @brief Macro to check the num type compatibility
- */
-#define CHECK_NUM_TYPE(PhyVar1, PhyVar2) \
-  static_assert(std::is_same<PhyVar1::NumType, PhyVar2::NumType>::value,\
-                "PhyVar - Error : not the same numerical types")
-/**
- * @brief Macro to check the unit type compatibility
- */
-#define CHECK_UNIT_TYPE(PhyVar1, PhyVar2) \
-  static_assert(std::is_same<PhyVar1::UnitType, PhyVar2::UnitType>::value,\
-                "PhyVar - Error : incompatible units")
-
+namespace PhyV {
 
 /**
  * @brief Base for the physical variable type
@@ -185,7 +172,6 @@ std::ostream& operator<<(std::ostream &out,
 }
 
 
-#include "PhyVar.impl.tpp"
+} // namespace PhyV
 
-#undef CHECK_NUM_TYPE
-#undef CHECK_UNIT_TYPE
+#include "PhyVar.impl.tpp"

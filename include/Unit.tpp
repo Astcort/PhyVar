@@ -3,6 +3,7 @@
 #include <string>
 #include <sstream>
 
+namespace PhyV {
 
 /**
  * @brief Base class for the unit type
@@ -86,3 +87,5 @@ protected:
     }
   }
 };
+
+} // namespace PhyV
