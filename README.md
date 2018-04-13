@@ -1,7 +1,13 @@
 # PhyVar
 
+## Author(s)
+
+* Mickaël Ly - ELAN team - Inria Grenoble Rhône-Alpes
+
 ## Short description
 *PhyVar* is a short library using templates to manipulate physical variables *ie* to keep trace of the SI units affected to each variable.
+
+A short support for compatibility with Eigen is also provided.
 
 ## How to use 
 
