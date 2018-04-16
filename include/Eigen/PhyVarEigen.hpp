@@ -2,7 +2,7 @@
 #define PHYVAR_EIGEN_HPP
 
 #include <Eigen>
-#include "PhyVar.hpp"
+#include "../Core/PhyVar.hpp"
 
 namespace Eigen {
 

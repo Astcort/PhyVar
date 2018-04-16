@@ -1,6 +1,6 @@
 #include <Eigen>
-#include "../include/PhyVar.hpp"
-#include "../include/PhyVarEigen.hpp"
+#include "../include/Core/PhyVar.hpp"
+#include "../include/Eigen/PhyVarEigen.hpp"
 
 void basicExample() {
 

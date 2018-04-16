@@ -11,7 +11,14 @@ A short support for compatibility with Eigen is also provided.
 
 ## How to use 
 
-Just include all the files that are in the `include` directory of this project to yours.
+Just include all the following files of the the `include/Core` directory of this project to yours :
+* `PhyVar.hpp`
+* `PhyVar.tpp`
+* `PhyVar.impl.pp`
+* `Unit.tpp`
+
+For the Eigen support, also include the content of `include/Eigen` :
+* `PhyVarEigen.hpp`
 
 ## Getting started 
 
