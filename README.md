@@ -17,7 +17,7 @@ Just include all the following files of the the `include/Core` directory of this
 * `PhyVar.impl.pp`
 * `Unit.tpp`
 
-For the Eigen support, also include the content of `include/Eigen` :
+For the Eigen support, also include the content of `include/Eigen` (tested with Eigen 3.3.3) :
 * `PhyVarEigen.hpp`
 
 ## Getting started 
