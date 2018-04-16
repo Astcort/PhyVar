@@ -1,6 +1,7 @@
 #include <Eigen>
 #include "../include/Core/PhyVar.hpp"
 #include "../include/Eigen/PhyVarEigen.hpp"
+#include "../include/Miscellaneous/PowerSeries.hpp"
 
 void basicExample() {
 
@@ -66,6 +67,22 @@ void timeStepExample() {
   
 }
 
+void powerSeriesExample() {
+
+  const unsigned int power = 5u;
+
+  PhyV::PowerSeries<PhyV::NewtonD, power> series;
+  
+  std::cout << "Serie : " << std::endl;
+  std::cout << "\t" << std::get<0>(series) << std::endl;
+  std::cout << "\t" << std::get<1>(series) << std::endl;
+  std::cout << "\t" << std::get<2>(series) << std::endl;
+  std::cout << "\t" << std::get<3>(series) << std::endl;
+  std::cout << "\t" << std::get<4>(series) << std::endl;
+  
+  
+}
+
 
 
 int main(int argc, char *argv[]) {
@@ -75,6 +92,8 @@ int main(int argc, char *argv[]) {
   eigenExample();
 
   timeStepExample();
+
+  powerSeriesExample();
   
   return 0;
 }
